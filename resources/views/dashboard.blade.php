@@ -86,16 +86,16 @@ if($_SESSION["userName"]==""){
               <div class="col-md-4">
             </div>
               <div class="col-md-4">
-                  <label for="validationCustom04" class="form-label">Section:</label>
+                  <label for="validationCustom04" class="form-label">Staff:</label>
                   <select class="form-select" name="section" id="validationCustom04" required>
                     <option selected disabled value="">Choose...</option>
                     
                     @foreach($view as $views)
-                    <option>{{$views->SECTION}}</option>
+                    <option>{{$views->staffname}}</option>
                     @endforeach
                   </select>
                   <div class="invalid-feedback">
-                    Please select a Section.
+                    Please select a staffname.
                   </div>
                 </div>
                 <div class="col-12">
@@ -110,7 +110,7 @@ if($_SESSION["userName"]==""){
 
         </div>
 
-        
+         
       </div>
     </section>
 

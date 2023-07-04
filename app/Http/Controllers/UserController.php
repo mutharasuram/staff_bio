@@ -44,7 +44,7 @@ class UserController extends Controller
    
 public function dashboard(){
 $userid=$_SESSION["userEmail"];
-$data=DB::connection('mysql2')->select("select DISTINCT `SECTION` from  `studentuser`");
+$data=DB::select("select * from  `stafflist`");
 // print_r($data);
 return view('dashboard')->with('view',$data);
 
