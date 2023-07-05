@@ -80,9 +80,9 @@ if($_SESSION["userName"]==""){
 
           <div class="card">
             <div class="card-body">
-             <center> <h4 class="card-title">{{$name}}<br>{{$regno}}</h4></center>
+             <center> <h4 class="card-title">{{$name}}</h4></center>
              <?php
-$data=DB::connection('mysql2')->select("select * from  `biomatric` where `regno`='$regno'");
+$data=DB::connection('mysql2')->select("select * from  `staff_bio` where `staffid`='$staffid'");
 $hii=json_encode($data);
 $value= substr("$hii",1,-1);
 
@@ -112,8 +112,8 @@ $figerimg=$tokenOutput2->{'figerimg'};
              <center> <form action="delete"method="post">
                             @csrf
                             
-                            <input name="regno"value="{{$regno}}" hidden>
-                            <input name="section"value="{{$section}}" hidden>
+                            <input name="name"value="{{$staff}}"hidden >
+                            <input name="staffid"value="{{$staffid}}" hidden>
                             
                             <button class="btn btn-danger"type="submit">Delete</button>
                     </form>

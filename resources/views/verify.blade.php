@@ -413,7 +413,7 @@ if($_SESSION["userName"]==""){
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{$name}}<br>{{$regno}}</h5>
+              <h5 class="card-title">{{$name}}</h5>
 
        
 
@@ -450,8 +450,8 @@ if($_SESSION["userName"]==""){
            <form class="row g-3  needs-validation"action="insbio"method="post" novalidate>
             @csrf
             <input name="name"value="{{$name}}"hidden>
-            <input name="regno"value="{{$regno}}"hidden>
-            <input name="section"value="{{$section}}"hidden>
+            <input name="staffid"value="{{$staffid}}"hidden>
+            
            <div class="col-md-12">
                
                <textarea class="form-control" name="iso" id="txtIsoTemplate" required hidden></textarea>

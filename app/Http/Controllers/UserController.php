@@ -50,34 +50,39 @@ return view('dashboard')->with('view',$data);
 
 }
 public function view_section(Request $request){
-    $section = $request->input('section');
-    $data=DB::connection('mysql2')->select("select * from  `studentuser` where `SECTION`='$section'");
-    return view('view_section')->with('view',$data)->with('section',$section);
+    $staff = $request->input('staff');
+     $parts = explode("-", $staff);
+     
+    $staffname=$parts[0];
+
+    $staffid = end($parts);
+    $data=DB::select("select * from  `stafflist` where `staffid`='$staffid'");
+    return view('view_section')->with('view',$data)->with('staff',$staffname)->with('staffid',$staffid);
 }
 public function verify(Request $request){
     $name = $request->input('name');
-    $regno = $request->input('regno');
-    $section = $request->input('section');
-    return view('verify')->with('name',$name)->with('regno',$regno)->with('section',$section);
+    $staffid = $request->input('staffid');
+   
+    return view('verify')->with('name',$name)->with('staffid',$staffid);
 
 }
 public function insbio(Request $request){
     $date=date('Y-m-d');
     $name = $request->input('name');
-    $regno = $request->input('regno');
-    $section = $request->input('section');
+    $staffid = $request->input('staffid');
+    
 
     $iso = $request->input('iso');
     $cropped = $request->input('cropped-image');
     $finger = $request->input('finger');
     $fingerprint = $request->input('fingerprint');
 
-    $values = array('name' => $name,'regno' => $regno,'Encodediso' => $iso,'image' => $cropped,
+    $values = array('name' => $name,'staffid' => $staffid,'Encodediso' => $iso,'image' => $cropped,
      'finger' => $finger,'figerimg' => $fingerprint ,'date' =>  $date);
 
-               DB::connection('mysql2')->table('biomatric')->insert($values);
+               DB::connection('mysql2')->table('staff_bio')->insert($values);
              
-             $url = 'view_section?section=' . $section;
+             $url = 'view_section?staff=' .$name.'-'.$staffid;
              
 return Redirect::to($url)->with('alert', 'Successfully Biomatric Added!');
               
@@ -85,18 +90,17 @@ return Redirect::to($url)->with('alert', 'Successfully Biomatric Added!');
 }
 public function view(Request $request){
     $name = $request->input('name');
-    $regno = $request->input('regno');
-    $section = $request->input('section');
-    return view('view')->with('name',$name)->with('regno',$regno)->with('section',$section);
+    $staffid = $request->input('staffid');
+    return view('view')->with('name',$name)->with('staffid',$staffid);
 }
 public function delete(Request $request){
   
-    $regno = $request->input('regno');
-    $section = $request->input('section');
+    $name = $request->input('name');
+    $staffid = $request->input('staffid');
 
-    DB::connection('mysql2')->table('biomatric')->where('regno', $regno)->delete();
+    DB::connection('mysql2')->table('staff_bio')->where('staffid', $staffid)->delete();
              
-             $url = 'view_section?section=' . $section;
+    $url = 'view_section?staff=' .$name.'-'.$staffid;
              
 return Redirect::to($url)->with('alert1', 'Successfully Biomatric Deleted!');
               

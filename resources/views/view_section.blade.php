@@ -79,70 +79,71 @@ if($_SESSION["userName"]==""){
 @endif
 <?php
 $sno=1;
+//print_r($view);
 ?>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{$section}}</h5>
+              <h5 class="card-title">{{$staff}}</h5>
 
-              <table class="table table-bordered border-primary">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Register No</th>
-                    <th scope="col">Action</th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach($view as $views)
+              <div class="row">
+              <div class="col-sm-2">
+              <p></p>
+<b><p>Department</p>
+<p>Email</p>
+<p>Designation</p></b>
+
+</div>
+<div class="col-sm-3">
+<p>{{$view[0]->department}}</p>
+<p>{{$view[0]->email}}</p>
+<p>{{$view[0]->designation}}</p>
+
+</div>
+</div>
+
+
+             
                     <?php
-                    $regno=$views->REGNO;
-$data=DB::connection('mysql2')->select("select * from  `biomatric` where `regno`='$regno'");
+                    $staffid;
+                    
+$data=DB::connection('mysql2')->select("select * from  `staff_bio` where `staffid`='$staffid'");
 $hii=json_encode($data);
         $value= substr("$hii",1,-1);
        
                     ?>
-                  <tr>
-                    <th scope="row">{{$sno++}}</th>
-                    <td>{{$views->FULLNAME}}</td>
-                    <td>{{$views->REGNO}}</td>
+
                     <?php
                     if($value==""){
                         ?>
-                    <td>
+                    
                         <form action="verify"method="post">
                             @csrf
-                            <input name="name"value="{{$views->FULLNAME}}"hidden >
-                            <input name="regno"value="{{$views->REGNO}}" hidden>
-                            <input name="section"value="{{$views->SECTION}}" hidden>
+                            <input name="name"value="{{$staff}}"hidden >
+                            <input name="staffid"value="{{$staffid}}" hidden>
+                            
                             
                             <button class="btn btn-primary"type="submit">Verify</button>
                     </form>
 
-                    </td>
+                   
 
 
                     <?php }else{
 ?>
 
-<td> <form action="view"method="post">
+ <form action="view"method="post">
                             @csrf
-                            <input name="name"value="{{$views->FULLNAME}}"hidden >
-                            <input name="regno"value="{{$views->REGNO}}" hidden>
-                            <input name="section"value="{{$views->SECTION}}" hidden>
+                            <input name="name"value="{{$staff}}"hidden >
+                            <input name="staffid"value="{{$staffid}}" hidden>
                             
                             <button class="btn btn-success"type="submit">View</button>
                     </form>
 
-</td>
+
 <?php
                     }
 ?>
-                  </tr>
-                  @endforeach
-                  </tbody>
-              </table>
+                 
 
 
 
