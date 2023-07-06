@@ -106,6 +106,10 @@ return Redirect::to($url)->with('alert1', 'Successfully Biomatric Deleted!');
               
 
 }
+public function match(){
+    
+    return view('match');
+}
 public function logout(){
 
 

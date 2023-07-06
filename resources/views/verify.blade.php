@@ -168,6 +168,11 @@ if($_SESSION["userName"]==""){
                         document.getElementById('imgFinger').src = "data:image/bmp;base64," + res.data.BitmapData;
                         document.getElementById('demo').value = "data:image/bmp;base64," + res.data.BitmapData;
                         var imageinfo = "Quality: " + res.data.Quality + " Nfiq: " + res.data.Nfiq + " W(in): " + res.data.InWidth + " H(in): " + res.data.InHeight + " area(in): " + res.data.InArea + " Resolution: " + res.data.Resolution + " GrayScale: " + res.data.GrayScale + " Bpp: " + res.data.Bpp + " WSQCompressRatio: " + res.data.WSQCompressRatio + " WSQInfo: " + res.data.WSQInfo;
+                       //qulity print
+                        var paragraph = document.getElementById("myParagraph");
+                        var myValue = "Quality: " + res.data.Quality;
+                        paragraph.innerHTML = myValue;
+                       //
                         document.getElementById('txtImageInfo').value = imageinfo;
                         document.getElementById('txtIsoTemplate').value = res.data.IsoTemplate;
                         document.getElementById('txtAnsiTemplate').value = res.data.AnsiTemplate;
@@ -432,7 +437,7 @@ if($_SESSION["userName"]==""){
               
                     <input type="text" value="" id="txtImageInfo" class="form-control" hidden/>
              
-           
+                    
            
                   
                
@@ -500,6 +505,7 @@ if($_SESSION["userName"]==""){
 
              <div class="col-md-8" >
     <img id="imgFinger" width="150px" height="150px"  style="border:black solid 1px;float:right"/>
+    <p id="myParagraph"style="float:right"></p>
 
     <input id="demo"name="fingerprint"hidden required>
 
