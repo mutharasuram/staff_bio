@@ -1,106 +1,55 @@
+<?php error_reporting("0");
+session_start();
+if($_SESSION["userName"]==""){
+
+  ?>
+ <script> window.location.href='/';</script>
+  <?php
+}
+
+?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en"> 
+
 <head>
-    <title>MFS100 Web Test</title>
-    <style type="text/css">
-        body {
-            font-family: 'Segoe UI';
-            background-color: #DDDDDD;
-            margin: 0px 5px 5px 5px;
-            padding: 0px 5px 5px 5px;
-            color: #555;
-            font-size: 12px;
-        }
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        .panel {
-            background-color: #FFFFFF;
-            -moz-user-select: none;
-            background-image: none;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            margin: 12px 12px;
-            padding: 6px 12px;
-        }
 
-        .btn {
-            display: inline-block;
-            padding: 6px 12px;
-            margin-bottom: 0px;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.42857;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: middle;
-            cursor: pointer;
-            -moz-user-select: none;
-            background-image: none;
-            border: 1px solid transparent;
-            border-radius: 4px;
-        }
-        .btn-50 {
-            width: 50px;
-        }
-        .btn-100 {
-            width: 100px;
-        }
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-        .btn-150 {
-            width: 150px;
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        .btn-200 {
-            width: 205px;
-        }
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-        .btn-primary {
-            color: #FFF;
-            background-color: #428BCA;
-            border-color: #357EBD;
-        }
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
 
-            .btn-primary:hover {
-                color: #FFF;
-                background-color: #357EBD;
-                border-color: #428BCA;
-            }
-
-        .form-control {
-            display: block;
-            width: 100%;
-            height: 24px;
-            padding: 3px 6px;
-            font-size: 12px;
-            /*line-height: 1.42857;*/
-            color: #555;
-            background-color: #FFF;
-            background-image: none;
-            border: 1px solid #bdbdbd;
-            border-radius: 4px;
-            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
-            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-        }
-
-        textarea.form-control {
-            height: auto;
-        }
-
-        .text-bold {
-            font-weight: bold;
-        }
-
-        .img {
-            min-width: 125px;
-            min-height: 155px;
-            width: 125px;
-            height: 155px;
-            border: 1px solid #CCC;
-            border-radius: 4px;
-            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
-            background-color: #FFFFFF;
-        }
-    </style>
-    <script src="biojs/jquery-1.8.2.js"></script>
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <script src="biojs/jquery-1.8.2.js"></script>
     <script src="biojs/mfs100.js"></script>
     <script language="javascript" type="text/javascript">
 
@@ -211,11 +160,19 @@
                 var res = CaptureFinger(quality, timeout);
                 if (res.httpStaus) {
 
-                    document.getElementById('txtStatus').value = "ErrorCode: " + res.data.ErrorCode + " ErrorDescription: " + res.data.ErrorDescription;
-
+                    document.getElementById('txtStatus').value = res.data.ErrorDescription;
+                    if (res.data.ErrorCode == "-1140") {
+                        alert("Timeout!");
+                    }
                     if (res.data.ErrorCode == "0") {
                         document.getElementById('imgFinger').src = "data:image/bmp;base64," + res.data.BitmapData;
+                        document.getElementById('demo').value = "data:image/bmp;base64," + res.data.BitmapData;
                         var imageinfo = "Quality: " + res.data.Quality + " Nfiq: " + res.data.Nfiq + " W(in): " + res.data.InWidth + " H(in): " + res.data.InHeight + " area(in): " + res.data.InArea + " Resolution: " + res.data.Resolution + " GrayScale: " + res.data.GrayScale + " Bpp: " + res.data.Bpp + " WSQCompressRatio: " + res.data.WSQCompressRatio + " WSQInfo: " + res.data.WSQInfo;
+                       //qulity print
+                        var paragraph = document.getElementById("myParagraph");
+                        var myValue = "Quality: " + res.data.Quality;
+                        paragraph.innerHTML = myValue;
+                       //
                         document.getElementById('txtImageInfo').value = imageinfo;
                         document.getElementById('txtIsoTemplate').value = res.data.IsoTemplate;
                         document.getElementById('txtAnsiTemplate').value = res.data.AnsiTemplate;
@@ -263,14 +220,18 @@
 
         }
 
+
         function Match() {
             try {
                 var isotemplate = document.getElementById('txtIsoTemplate').value;
-                var res = MatchFinger(quality, timeout, isotemplate);
 
+                var res = MatchFinger(quality, timeout, isotemplate);
+                console.log(res);
+                console.log(document.getElementById('txtIsoTemplate').value);
                 if (res.httpStaus) {
                     if (res.data.Status) {
-                        alert("Finger matched");
+                        //alert("Finger matched");
+                        window.location.href='matchhh';
                     }
                     else {
                         if (res.data.ErrorCode != "0") {
@@ -425,233 +386,151 @@
         }
     </script>
 </head>
+
 <body>
+@include('layouts.includes.header') 
+  <!-- ======= Header ======= -->
+  <!-- End Header -->
 
-    <table width="100%" style="padding-top:0px;">
-        <tr>
-            <td colspan="3" align="center" style="color: #428BCA; font-size: 20px; font-weight:bold;">
-                MANTRA-MFS100-TEST
-            </td>
-        </tr>
+<!-- End Sidebar-->
 
-        <tr>
-            <td colspan="3" align="center" style="color: red; font-size: 14px;">
-                Please check that your bowser is asking for enable script or not. If yes then enable it.
-                <!--<br />-->
-                If you are using Internet Explorer then it will ask for "Allow Blocked Content".
-                <br />
-                First call may take some time, so wait after click any button
-            </td>
-        </tr>
+  <main id="" class="container-fluid">
 
-        <tr>
-            <td width="200px;">
-                <table align="left" border="0" width="100%">
-                    <tr>
-                        <td>
-                            <input type="submit" id="btnInfo" value="Get Info" class="btn btn-primary btn-200" onclick="return GetInfo()" />
-                        </td>
-                        <td>
-                            <input type="submit" id="btnCapture" value="Capture" class="btn btn-primary btn-100" onclick="return Capture()" />
-                        </td>
-                    </tr>
-					
-					 <tr>
-                            <td>
-                                <input type="submit" id="btnMultiCapture" value="Capture With Deduplicate" class="btn btn-primary btn-200" onclick="return MultiFingerCapture()" />
-
-                            </td>
-                             <td align="center" style="padding-right:10px;" ><b>No Of Finger</b>
-							 
-							<input type="text" value="2" id="txtNoOfFinger" class="form-control" />
-							 </td>
-							 
-							
-                        </tr>
-					
-					
-                    <tr>
-                        <td colspan="2">
-                            <input type="submit" id="btnCaptureAndMatch" value="Capture and Match" class="btn btn-primary btn-200" onclick="return Match()" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td >
-                            <input type="submit" id="btnMatch" value="Match" class="btn btn-primary btn-200" onclick="return Verify()" />
-                        </td>
-                    </tr>
-                    <tr style="display:none">
-                        <td>
-                            <input type="submit" id="btnGetPid" value="Get PID (X)" class="btn btn-primary btn-100" onclick="return GetPid()" />
-                        </td>
-                        <td>
-                            <input type="submit" id="btnProtoGetPid" value="Get PID (P)" class="btn btn-primary btn-100" onclick="return GetProtoPid()" />
-                        </td>
-                    </tr>
-                     <tr style="display:none">
-                        <td>
-                            <input type="submit" id="btnGetRbd" value="Get RBD (X)" class="btn btn-primary btn-100" onclick="return GetRbd()" />
-                        </td>
-                        <td>
-                            <input type="submit" id="btnProtoGetRbd" value="Get RBD (P)" class="btn btn-primary btn-100" onclick="return GetProtoRbd()" />
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td width="150px" height="190px" align="center" class="img">
-                <img id="imgFinger" width="145px" height="188px" alt="Finger Image" />
-            </td>
-            <td>
-                <table align="left" border="0" style="width:100%; padding-right:20px;">
-                    <tr>
-                        <td style="width: 100px;">Key:</td>
-                        <td colspan="3">
-                            <input type="text" value="" id="txtKey" class="form-control" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="left" style="width: 100px;">Serial No:</td>
-                        <td align="left" style="width: 150px;" id="tdSerial"></td>
-                        <td align="left" style="width: 100px;">Certification:</td>
-                        <td align="left" id="tdCertification"></td>
-                    </tr>
-                    <tr>
-                        <td align="left">Make:</td>
-                        <td align="left" id="tdMake"></td>
-                        <td align="left">Model:</td>
-                        <td align="left" id="tdModel"></td>
-                    </tr>
-                    <tr>
-                        <td align="left">Width:</td>
-                        <td align="left" id="tdWidth"></td>
-                        <td align="left">Height:</td>
-                        <td align="left" id="tdHeight"></td>
-                    </tr>
-                    <tr>
-                        <td align="left">Local IP</td>
-                        <td align="left" id="tdLocalIP"></td>
-                        <td align="left">Local MAC:</td>
-                        <td align="left" id="tdLocalMac"></td>
-                    </tr>
-                    <tr>
-                        <td align="left">Public IP</td>
-                        <td align="left" id="tdPublicIP"></td>
-                        <td align="left">System ID</td>
-                        <td align="left" id="tdSystemID"></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <div class="panel">
-        <table width="100%">
-            <tr>
-                <td width="220px">
-                    Status:
-                </td>
-                <td>
-                    <input type="text" value="" id="txtStatus" class="form-control" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Quality:
-                </td>
-                <td>
-                    <input type="text" value="" id="txtImageInfo" class="form-control" />
-                </td>
-            </tr>
-            <!--<tr>
-                <td>
-                    NFIQ:
-                </td>
-                <td>
-                    <input type="text" value="" id="txtNFIQ" class="form-control" />
-                </td>
-            </tr>-->
-            <tr>
-                <td>
-                    Base64Encoded ISO Template
-                </td>
-                <td>
-                    <textarea id="txtIsoTemplate" style="width: 100%; height:50px;" class="form-control"> </textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Base64Encoded ANSI Template
-                </td>
-                <td>
-                    <textarea id="txtAnsiTemplate" style="width: 100%; height:50px;" class="form-control"> </textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Base64Encoded ISO Image
-                </td>
-                <td>
-                    <textarea id="txtIsoImage" style="width: 100%; height:50px;" class="form-control"> </textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Base64Encoded Raw Data
-                </td>
-                <td>
-                    <textarea id="txtRawData" style="width: 100%; height:50px;" class="form-control"> </textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Base64Encoded Wsq Image Data
-                </td>
-                <td>
-                    <textarea id="txtWsqData" style="width: 100%; height:50px;" class="form-control"> </textarea>
-                </td>
-            </tr>
-            <tr style="display:none">
-                <td>
-                    Encrypted Base64Encoded Pid/Rbd
-                </td>
-                <td>
-                    <textarea id="txtPid" style="width: 100%; height:50px;" class="form-control"> </textarea>
-                </td>
-            </tr>
-            <tr style="display:none">
-                <td>
-                    Encrypted Base64Encoded Session Key
-                </td>
-                <td>
-                    <textarea id="txtSessionKey" style="width: 100%; height:50px;" class="form-control"> </textarea>
-                </td>
-            </tr>
-           <tr style="display:none">
-                <td>
-                    Encrypted Base64Encoded Hmac
-                </td>
-                <td>
-                    <input type="text" value="" id="txtHmac" class="form-control" />
-
-                </td>
-            </tr>
-           <tr style="display:none">
-                <td>
-                    Ci
-                </td>
-                <td>
-                    <input type="text" value="" id="txtCi" class="form-control" />
-                </td>
-            </tr>
-            <tr style="display:none">
-                <td>
-                    Pid/Rbd Ts
-                </td>
-                <td>
-                    <input type="text" value="" id="txtPidTs" class="form-control" />
-                </td>
-            </tr>
-        </table>
+    <div class="pagetitle">
+      <h1></h1>
+      <nav>
+        
+      </nav>
+    </div><!-- End Page Title -->
+    <br><br><br><br>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+        @if (session('alert'))
+    <div class="alert alert-success">
+        {{ session('alert') }}
     </div>
+@endif
+@if (session('alert1'))
+    <div class="alert alert-danger">
+        {{ session('alert1') }}
+    </div>
+@endif
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{$name}}</h5>
+
+       
+
+      
+
+        
+                           
+				
+              
+            
+                
+            
+
+      
+                    <input id="txtStatus" type="text"class="form-control" hidden/>
+              
+                    <input type="text" value="" id="txtImageInfo" class="form-control" hidden/>
+             
+                    
+           
+                  
+               
+                
+                    <textarea id="txtAnsiTemplate" style="width: 100%; height:50px;" class="form-control"hidden> </textarea>
+           
+                    <textarea id="txtIsoImage" style="width: 100%; height:50px;" class="form-control"hidden></textarea>
+                    
+            
+                    <textarea id="txtRawData" style="width: 100%; height:50px;" class="form-control"hidden> </textarea>
+               
+                    <textarea id="txtWsqData" style="width: 100%; height:50px;" class="form-control"hidden> </textarea>
+             
+           
+          
+               
+               <textarea class="form-control" name="iso" id="txtIsoTemplate" required hidden>{{$data[0]->Encodediso}}</textarea>
+               
+               
+              
+
+           
+          
+             <div class="container">
+                <div class="row">
+                        <div class="col-sm">
+                        <img class="img-circle" src="{{$data[0]->image}}"width="300" height="300" style="float:right"/>
+
+                        </div>
+
+                        <div class="col-sm">
+                        <img class="img-circle" src="{{$data[0]->figerimg}}"width="150" height="150"style="border:black solid 1px"/><br><br>
+                        <p><b>{{$data[0]->finger}}</b></p>
+
+                        </div>
+
+                </div>
+</div><br>
+            
+
+            
+            
+
+             
+            
+
+            
+
+
+
+             <div class="col-12">
+             
+             <input type="submit" id="btnCaptureAndMatch" value="Capture and Match" class="btn btn-primary btn-200" onclick="return Match()" />
+             
+                </div>
+    </form>
+     
+
+              
+            </div>
+          </div>
+
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+
+
+  <!-- End Footer -->
+
+ 
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
 </body>
+
 </html>
+
+
 

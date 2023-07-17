@@ -28,5 +28,6 @@ Route::post('verify',[UserController::class,'verify']);
 Route::post('insbio',[UserController::class,'insbio']);
 Route::post('view',[UserController::class,'view']);
 Route::post('delete',[UserController::class,'delete']);
-Route::get('match',[UserController::class,'match']);
+Route::post('match',[UserController::class,'match']);
+Route::get('matchhh',[UserController::class,'matchhh']);
 Route::get('logout',[UserController::class,'logout']);

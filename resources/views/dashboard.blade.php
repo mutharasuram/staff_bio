@@ -104,7 +104,21 @@ if($_SESSION["userName"]==""){
                 </form>
 <br>
 <br>
-<a class="btn btn-success" href="match">match</a>
+
+<form id="myform" class="success"action="match"method="post">
+                @csrf
+              <div class="row">
+                
+              <div class="form-group">
+                <label> ID<span class="req">*</span> </label>
+                <input type="text" id="mytext" name="mytext" class="form-control"  required data-validation-required-message="Please enter your ID." autocomplete="off">
+                <p class="help-block text-danger"></p>
+              </div>
+              
+              <div class="mrgn-30-top">
+                
+              </div>
+            </form>
             </div>
           </div>
 
@@ -138,3 +152,21 @@ if($_SESSION["userName"]==""){
 </body>
 
 </html>
+
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+
+
+
+
+<script>
+
+var text = $("#mytext");
+var form = $("#myform");
+text.bind("change keyup", function() {
+    
+        $("#myform").submit();
+});
+</script>
+

@@ -106,9 +106,25 @@ return Redirect::to($url)->with('alert1', 'Successfully Biomatric Deleted!');
               
 
 }
-public function match(){
-    
-    return view('match');
+public function match(Request $request){
+    $id = $request->input('mytext');
+    $data=DB::connection('mysql2')->select("select * from  `staff_bio` where `staffid`='$id'");
+
+//print_r($data);
+if($data[0]==""){
+
+return back()->with('alert1','No data!');
+}else{
+
+ return view('match')->with('data',$data);
+
+}
+   
+}
+public function matchhh(){
+
+    return redirect('dashboard')->with('alert', 'Successfully Biomatric Matched!');
+
 }
 public function logout(){
 
